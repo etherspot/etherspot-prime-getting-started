@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@etherspot/prime-sdk": "^1.2.11",
+    "@etherspot/prime-sdk": "^1.6.4",
     "ethers": "^5.7.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",

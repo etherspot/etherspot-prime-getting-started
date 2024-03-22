@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { PrimeSdk } from '@etherspot/prime-sdk';
+import { PrimeSdk, EtherspotBundler } from '@etherspot/prime-sdk';
 import { ethers } from 'ethers'
 import './App.css';
 import logo from "./etherspot.png"
@@ -22,8 +22,10 @@ const App = () => {
 }
 
   const generateEtherspotWallet = async () => {
+
+    const bundlerApiKey = "eyJvcmciOiI2NTIzZjY5MzUwOTBmNzAwMDFiYjJkZWIiLCJpZCI6IjMxMDZiOGY2NTRhZTRhZTM4MGVjYjJiN2Q2NDMzMjM4IiwiaCI6Im11cm11cjEyOCJ9"
     // Initialise Etherspot SDK
-    const primeSdk = new PrimeSdk({ privateKey: eoaPrivateKey}, { chainId: 80001, projectKey: '' })
+    const primeSdk = new PrimeSdk({ privateKey: eoaPrivateKey}, { chainId: 80001, bundlerProvider: new EtherspotBundler(80001, bundlerApiKey)  })
     const address: string = await primeSdk.getCounterFactualAddress();
     setEtherspotWalletAddress(address);
     console.log('\x1b[33m%s\x1b[0m', `EtherspotWallet address: ${address}`);
